@@ -1,0 +1,15 @@
+name: Auto Fetch Signals
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Call ingest endpoint
+        run: |
+          curl -X GET https://smart-money-dashboard.vercel.app/api/ingest
